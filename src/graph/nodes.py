@@ -201,6 +201,7 @@ def coordinator_node(
         .bind_tools([handoff_to_planner])
         .invoke(messages)
     )
+    
     logger.debug(f"Current state messages: {state['messages']}")
 
     goto = "__end__"
