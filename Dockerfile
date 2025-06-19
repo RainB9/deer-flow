@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -y curl xz-utils
 # 安装 Git
 RUN apt-get update && apt-get install -y git
 
+
+
 # 安装 Node.js v20.x LTS 版本（无需 apt 源）
 ENV NODE_VERSION=20.12.2
 
@@ -27,6 +29,11 @@ WORKDIR /app
 
 # Install Tavily + LangChain tool support
 RUN pip install -U langchain-community tavily-python
+#INSTALL PUBMED MCP SERVER
+
+# 安装 PubMed MCP Server 到虚拟环境
+RUN pip install mcp-simple-pubmed
+
 
 COPY . /app
 

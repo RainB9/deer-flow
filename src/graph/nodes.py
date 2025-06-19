@@ -196,12 +196,17 @@ def coordinator_node(
     """Coordinator node that communicate with customers."""
     logger.info("Coordinator talking.")
     messages = apply_prompt_template("coordinator", state)
+
+
     response = (
         get_llm_by_type(AGENT_LLM_MAP["coordinator"])
         .bind_tools([handoff_to_planner])
         .invoke(messages)
     )
-    
+
+  
+
+
     logger.debug(f"Current state messages: {state['messages']}")
 
     goto = "__end__"
